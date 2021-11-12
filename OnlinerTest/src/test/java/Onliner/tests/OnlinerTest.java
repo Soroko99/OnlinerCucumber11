@@ -5,8 +5,6 @@ import Onliner.pageobjects.MainPage;
 import Onliner.pageobjects.TVPage;
 import framework.ConfigureClass;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -35,7 +33,6 @@ public class OnlinerTest extends ConfigureClass {
         tvPage.screenSizeFiltration("from", minScreenSize);
         tvPage.screenSizeFiltration("to", maxScreenSize);
 
-        //sleep();
         tvPage.manufacturerValidation(tvPage.generatingTvCharacteristicsList(driver, manufacturerXpath), manufacturer);
         tvPage.maxPriceValidation(tvPage.generatingTvCharacteristicsList(driver, priceXpath), maximumPrice);
         tvPage.screenSizeValidation(tvPage.generatingTvCharacteristicsList(driver, screenSizeValidationXpath), minScreenSize, maxScreenSize);
