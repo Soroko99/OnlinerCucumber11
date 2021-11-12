@@ -35,7 +35,6 @@ public class TVPage {
     protected String commonXpath = "//div[@class='schema-product']";
 
     public void waitForPageToLoad() {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
         WebDriverWait wait = new WebDriverWait(driver, 4);
         try{
             wait.until((ExpectedCondition<Boolean>) (ExpectedCondition<Boolean>) (x) -> {
