@@ -49,6 +49,7 @@ public class StepsDefinition {
     @And("I choose {string} product")
     public void iChooseProduct(String productName) {
         catalogPage.productChoice(productName);
+        catalogPage.isRightPageOpenedAssertion();
     }
 
     @And("I filter product by manufacturer {string}")

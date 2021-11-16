@@ -1,7 +1,6 @@
 package framework.elements;
 
 import framework.Browser;
-import framework.PropertyManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -9,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -17,7 +17,6 @@ public class BaseElement{
     WebDriver driver = Browser.driver;
     By locator;
     WebElement element;
-    PropertyManager propertyManager = new PropertyManager();
 
     public BaseElement(By locator){
         this.locator = locator;
@@ -29,7 +28,7 @@ public class BaseElement{
             ((JavascriptExecutor)driver).executeScript("arguments[0].style.border='3px solid red'", element);
         }
         element.click();
-    };
+    }
 
     public void clickViaJS() {
         waitForIsElementPresent(locator);
