@@ -3,7 +3,7 @@ Feature: I want to test TV filtration
   Scenario Outline: I want to filter TV's by some parameters
     Given I go to main page
     When I go to "Каталог" page
-    And there I choose "Электроника" category
+    And at this page I choose "Электроника" category
     And I choose "Телевидение" subcategory
     And I choose "Телевизоры" product
     And I filter product by manufacturer "<manufacturer>"

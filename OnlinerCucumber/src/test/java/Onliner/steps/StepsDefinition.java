@@ -36,7 +36,7 @@ public class StepsDefinition {
         mainPage.isRightPageOpenedAssertion();
     }
 
-    @And("there I choose {string} category")
+    @And("at this page I choose {string} category")
     public void iChooseCategory(String categoryName) {
         catalogPage.catalogSubsectionChoice(categoryName);
     }
