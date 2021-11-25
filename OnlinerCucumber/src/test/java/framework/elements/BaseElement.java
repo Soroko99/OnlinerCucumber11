@@ -7,22 +7,24 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
+import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class BaseElement{
 
     WebDriver driver = Browser.driver;
+    WebDriverWait wait = new WebDriverWait(driver, 5);
     By locator;
     WebElement element;
+    List<WebElement> elementList;
 
     public BaseElement(By locator){
         this.locator = locator;
     }
 
     public void click() {
-        waitForIsElementPresent(locator);
+        waitForIsElementPresent();
         if (driver instanceof JavascriptExecutor) {
             ((JavascriptExecutor)driver).executeScript("arguments[0].style.border='3px solid red'", element);
         }
@@ -30,31 +32,46 @@ public class BaseElement{
     }
 
     public void clickViaJS() {
-        waitForIsElementPresent(locator);
+        waitForIsElementPresent();
         if (driver instanceof JavascriptExecutor) {
             ((JavascriptExecutor)driver).executeScript("arguments[0].style.border='3px solid blue'", element);
         }
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
     }
 
-    public void waitForIsElementPresent(By locator){
-        element = driver.findElement(locator);
-        isPresent(locator);
-        if(!element.isDisplayed()){
-            System.out.println("Bad news");
-        }
-        Assert.assertTrue(element.isDisplayed());
+    public WebElement getElement(){
+        waitForIsElementPresent();
+        return element;
     }
 
-    private boolean isPresent(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, 5);
+    public boolean waitForIsElementPresent(){
+        return isPresent();
+    }
+
+    public boolean isPresent() {
+        try {
+            element = driver.findElement(locator);
+            return element.isDisplayed();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public List<WebElement> getElementList(){
+        if (arePresent()) return elementList;
+        else return null;
+    }
+
+    private boolean arePresent() {
         try {
             wait.until((ExpectedCondition<Boolean>) new ExpectedCondition<Boolean>() {
                 public Boolean apply(final WebDriver driver) {
                     try {
-                        List<WebElement> list = driver.findElements(locator);
-                        for (WebElement el : list) {
+                        elementList = driver.findElements(locator);
+                        for (WebElement el : elementList) {
                             if (el != null && el.isDisplayed()) {
+                                element = el;
                                 return element.isDisplayed();
                             }
                         }

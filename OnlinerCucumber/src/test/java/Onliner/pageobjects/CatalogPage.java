@@ -1,16 +1,16 @@
 package Onliner.pageobjects;
 
+import framework.BasePage;
 import framework.elements.Button;
 import framework.elements.Dropdown;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
-public class CatalogPage extends BasePage{
+public class CatalogPage extends BasePage {
 
     public String catalogSectionXpath = "//ul//span[contains(text(),'%s')]//ancestor::li";
     public String electronicsSectionXpath = "//div[contains(text(), '%s')]";
     public String productXpath = "//span[contains(text(),'%s')]//ancestor::a";
-    public String tvExpectedTitle = "Телевизор купить в Минске";
 
     public void catalogSubsectionChoice(String subSectionName){
         Button catalogSubsectionChoiceBtn = new Button(By.xpath(String.format(catalogSectionXpath, subSectionName)));
@@ -28,7 +28,7 @@ public class CatalogPage extends BasePage{
     }
 
     @Override
-    public void isRightPageOpenedAssertion() {
+    public void isRightPageOpenedAssertion(String tvExpectedTitle) {
         Assert.assertEquals(driver.getTitle(), tvExpectedTitle);
     }
 }

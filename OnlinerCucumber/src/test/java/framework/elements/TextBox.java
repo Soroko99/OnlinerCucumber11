@@ -1,7 +1,6 @@
 package framework.elements;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 public class TextBox extends BaseElement{
 
@@ -10,7 +9,7 @@ public class TextBox extends BaseElement{
     }
 
     public void sendKeys(String keys){
-        WebElement textBox = driver.findElement(locator);
-        textBox.sendKeys(keys);
+        getElement().sendKeys(keys);
     }
+
 }
