@@ -8,11 +8,12 @@ import org.testng.Assert;
 
 public class BrowserFactory {
 
-    public  static WebDriver createDriver(){
+    public static WebDriver createDriver(){
         String browser;
         WebDriver driver = null;
         PropertyManager propertyManager = new PropertyManager();
         browser = propertyManager.getExactProperty(PropertyManager.seleniumPropertyPath, "browser");
+        String browsFromEnv = System.getenv("browser");
         switch (browser){
             case "chrome":
                 WebDriverManager.chromedriver().setup();
@@ -23,7 +24,7 @@ public class BrowserFactory {
                 driver = new FirefoxDriver();
                 break;
             default:
-                Assert.fail(browser + " " + "нет такого драйвера!(");
+                Assert.fail(browser + " " + "driver is absent(");
         }
         return driver;
     }

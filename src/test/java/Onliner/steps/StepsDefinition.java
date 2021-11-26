@@ -36,7 +36,7 @@ public class StepsDefinition {
 
     @And("I check whether the {string} page was opened")
     public void iCheckWhetherThePageWasOpened(String pageTitle) {
-        mainPage.isRightPageOpenedAssertion("Каталог Onlíner");
+        mainPage.isRightPageOpenedAssertion(pageTitle);
     }
 
     @And("at this page I choose {string} category")
