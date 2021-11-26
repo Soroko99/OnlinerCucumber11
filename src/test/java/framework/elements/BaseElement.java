@@ -47,7 +47,7 @@ public class BaseElement{
 
     public void waitForElement(){
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.elementToBeClickable(locator));
+        wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 
     public boolean waitForIsElementPresent(){
