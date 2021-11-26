@@ -6,4 +6,5 @@ public abstract class BasePage {
 
     public WebDriver driver = Browser.driver;
     public abstract void isRightPageOpenedAssertion(String title);
+
 }
