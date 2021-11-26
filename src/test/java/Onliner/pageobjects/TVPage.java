@@ -56,9 +56,9 @@ public class TVPage extends BasePage {
 
     public void manufacturerFiltration(String manufacturerName)
     {
-        waitForPAgeIsLoaded();
+        //waitForPAgeIsLoaded();
         CheckBox manufacturerCheckBox = new CheckBox(By.xpath(String.format(manufacturerFilterXpath, manufacturerName.toLowerCase(Locale.ROOT))));
-        manufacturerCheckBox.click();
+        manufacturerCheckBox.clickViaJS();
     }
 
     public void priceFiltration(String placeholderText, String keysToSend)
