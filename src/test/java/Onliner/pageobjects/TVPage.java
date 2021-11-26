@@ -10,7 +10,6 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-
 import java.util.Locale;
 
 public class TVPage extends BasePage {
@@ -30,6 +29,7 @@ public class TVPage extends BasePage {
             Assert.assertTrue(manufacturerLabel.getElementList().get(i).getText().contains(manufacturer));
         }
     }
+
     public void priceValidation(String price){
         waitForFiltering();
         for (int i = 0; i < priceValLabel.getElementList().size(); i++)
