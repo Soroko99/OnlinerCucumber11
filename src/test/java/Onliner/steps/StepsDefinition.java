@@ -65,9 +65,9 @@ public class StepsDefinition {
         tvPage.manufacturerFiltration(manufacturerName);
     }
 
-    @And("I filter product by maxPrice {string}")
-    public void iFilterProductByMaxPrice(String maxPrice) {
-        tvPage.priceFiltration("до", maxPrice);
+    @And("I filter product by maxPrice {string} using {string} field")
+    public void iFilterProductByMaxPriceUsingField(String placeholder, String maxPrice) {
+        tvPage.priceFiltration(placeholder, maxPrice);
     }
 
     @And("I filter product by resolution {string}")
@@ -75,14 +75,14 @@ public class StepsDefinition {
         tvPage.resolutionFiltration(resolutionIs);
     }
 
-    @And("I filter product by minScreenSize {string}")
-    public void iFilterProductByMinScreenSize(String minScreenSize) {
-        tvPage.screenSizeFiltration("from", minScreenSize);
+    @And("I filter product by minScreenSize {string} using {string} field")
+    public void iFilterProductByMinScreenSize(String placeholder, String minScreenSize) {
+        tvPage.screenSizeFiltration(placeholder, minScreenSize);
     }
 
-    @And("I filter product by maxScreenSize {string}")
-    public void iFilterProductByMaxScreenSize(String maxScreenSize) {
-        tvPage.screenSizeFiltration("to", maxScreenSize);
+    @And("I filter product by maxScreenSize {string} using {string} field")
+    public void iFilterProductByMaxScreenSize(String placeholder, String maxScreenSize) {
+        tvPage.screenSizeFiltration(placeholder, maxScreenSize);
     }
 
     @Then("I get products according to parameters : {string}, {string}, {string}, {string}, {string}")
@@ -97,7 +97,5 @@ public class StepsDefinition {
     public void driverKill(){
         browser.driverClose();
     }
-
-
 
 }
