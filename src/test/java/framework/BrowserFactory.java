@@ -13,7 +13,11 @@ public class BrowserFactory {
         WebDriver driver = null;
         PropertyManager propertyManager = new PropertyManager();
         browser = propertyManager.getExactProperty(PropertyManager.seleniumPropertyPath, "browser");
-        //String browsFromEnv = System.getenv("browser");
+        String browsFromEnv = System.getenv("browser");
+        if (browsFromEnv == null)
+        {
+            browser = propertyManager.getExactProperty(PropertyManager.seleniumPropertyPath, "browser");
+        }
         switch (browser){
             case "chrome":
                 WebDriverManager.chromedriver().setup();

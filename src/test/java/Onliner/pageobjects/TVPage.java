@@ -65,7 +65,6 @@ public class TVPage extends BasePage {
         }catch (StaleElementReferenceException s){
             waitForFiltering();
         }
-
     }
 
     public void resolutionValidation(String resolution){
