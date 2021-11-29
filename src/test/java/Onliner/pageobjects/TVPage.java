@@ -7,6 +7,7 @@ import framework.elements.Label;
 import framework.elements.TextBox;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -25,33 +26,60 @@ public class TVPage extends BasePage {
 
     public void manufacturerValidation(String manufacturer){
         waitForPageISLoaded();
-        for (int i = 0; i < manufacturerLabel.getElementList().size(); i++){
-            Assert.assertTrue(manufacturerLabel.getElementList().get(i).getText().contains(manufacturer));
+        try {
+            for (int i = 0; i < manufacturerLabel.getElementList().size(); i++){
+                Assert.assertTrue(manufacturerLabel.getElementList().get(i).getText().contains(manufacturer));
+            }
+        } catch (NullPointerException e){
+            waitForPageISLoaded();
+        }catch (StaleElementReferenceException s){
+            waitForFiltering();
         }
+
     }
 
     public void priceValidation(String price){
         waitForPageISLoaded();
-        for (int i = 0; i < priceValLabel.getElementList().size(); i++)
-        {
-            Assert.assertTrue(Double.parseDouble(priceValLabel.getElementList().get(i).getText().split(" ")[0].replaceAll(",", "."))
-                    <= Double.parseDouble(price.replaceAll(",", ".")));
+        try {
+            for (int i = 0; i < priceValLabel.getElementList().size(); i++)
+            {
+                Assert.assertTrue(Double.parseDouble(priceValLabel.getElementList().get(i).getText().split(" ")[0].replaceAll(",", "."))
+                        <= Double.parseDouble(price.replaceAll(",", ".")));
+            }
+        } catch (NullPointerException e){
+            waitForPageISLoaded();
+        }catch (StaleElementReferenceException s){
+            waitForFiltering();
         }
     }
 
     public void screenSizeValidation(String minScreenSize, String maxScreenSize){
         waitForPageISLoaded();
-        for (int i = 0; i < screenSizeValLabel.getElementList().size(); i++){
-            Assert.assertTrue(Integer.parseInt(screenSizeValLabel.getElementList().get(i).getText().substring(0, 2)) >= Integer.parseInt(minScreenSize)
-                    && Integer.parseInt(screenSizeValLabel.getElementList().get(i).getText().substring(0, 2)) <= Integer.parseInt(maxScreenSize));
+        try {
+            for (int i = 0; i < screenSizeValLabel.getElementList().size(); i++){
+                Assert.assertTrue(Integer.parseInt(screenSizeValLabel.getElementList().get(i).getText().substring(0, 2)) >= Integer.parseInt(minScreenSize)
+                        && Integer.parseInt(screenSizeValLabel.getElementList().get(i).getText().substring(0, 2)) <= Integer.parseInt(maxScreenSize));
+            }
+        }catch (NullPointerException e){
+            waitForPageISLoaded();
+        }catch (StaleElementReferenceException s){
+            waitForFiltering();
         }
+
     }
 
     public void resolutionValidation(String resolution){
         waitForPageISLoaded();
-        for (int i = 0; i < resolutionValLabel.getElementList().size(); i++){
-            Assert.assertTrue(resolutionValLabel.getElementList().get(i).getText().contains(resolution));
+        try{
+            for (int i = 0; i < resolutionValLabel.getElementList().size(); i++){
+                Assert.assertTrue(resolutionValLabel.getElementList().get(i).getText().contains(resolution));
+            }
+        }catch (NullPointerException e){
+            waitForPageISLoaded();
+        }catch (StaleElementReferenceException s){
+            waitForFiltering();
         }
+
     }
 
     public void manufacturerFiltration(String manufacturerName)

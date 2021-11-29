@@ -12,11 +12,11 @@ public abstract class BasePage {
     public abstract void isRightPageOpenedAssertion(String title);
 
     public void waitForPageISLoaded(){
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, 20);
         wait.until((ExpectedCondition<Boolean>) (x) -> {
                 try {
-                    while (!(((JavascriptExecutor) driver).executeScript("return document.ready.").equals("complete"))){
-                        return false;
+                    if (((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete")){
+                        return true;
                     }
                 }catch (Exception e) {
                     return false;
