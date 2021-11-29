@@ -25,7 +25,6 @@ public class TVPage extends BasePage {
     Label resolutionValLabel = new Label(By.xpath("//div[@class='schema-product']//span[contains(@data-bind, 'description')]"));
 
     public void manufacturerValidation(String manufacturer){
-        waitForPageISLoaded();
         try {
             for (int i = 0; i < manufacturerLabel.getElementList().size(); i++){
                 Assert.assertTrue(manufacturerLabel.getElementList().get(i).getText().contains(manufacturer));
@@ -39,7 +38,6 @@ public class TVPage extends BasePage {
     }
 
     public void priceValidation(String price){
-        waitForPageISLoaded();
         try {
             for (int i = 0; i < priceValLabel.getElementList().size(); i++)
             {
@@ -54,7 +52,6 @@ public class TVPage extends BasePage {
     }
 
     public void screenSizeValidation(String minScreenSize, String maxScreenSize){
-        waitForPageISLoaded();
         try {
             for (int i = 0; i < screenSizeValLabel.getElementList().size(); i++){
                 Assert.assertTrue(Integer.parseInt(screenSizeValLabel.getElementList().get(i).getText().substring(0, 2)) >= Integer.parseInt(minScreenSize)
@@ -68,7 +65,6 @@ public class TVPage extends BasePage {
     }
 
     public void resolutionValidation(String resolution){
-        waitForPageISLoaded();
         try{
             for (int i = 0; i < resolutionValLabel.getElementList().size(); i++){
                 Assert.assertTrue(resolutionValLabel.getElementList().get(i).getText().contains(resolution));
@@ -101,14 +97,6 @@ public class TVPage extends BasePage {
     public void screenSizeFiltration(String screenSize, String fromOrTo){
         Dropdown screenSizeDropdown = new Dropdown(By.xpath(String.format(screenSizeXpath, fromOrTo)));
         screenSizeDropdown.select(Integer.toString(Integer.parseInt(screenSize) * 10));
-    }
-
-    public void waitForFiltering(){
-        try {
-            WebDriverWait wait = new WebDriverWait(driver, 5);
-            wait.until(ExpectedConditions.stalenessOf(driver.findElement(By.xpath("//span[contains(text(), 'Реклама')]"))));
-        } catch (NoSuchElementException ignored){
-        }
     }
 
     @Override

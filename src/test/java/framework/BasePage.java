@@ -1,9 +1,8 @@
 package framework;
 
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class BasePage {
@@ -23,5 +22,13 @@ public abstract class BasePage {
                 }
                 return true;
         });
+    }
+
+    public void waitForFiltering(){
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, 5);
+            wait.until(ExpectedConditions.stalenessOf(driver.findElement(By.xpath("//span[contains(text(), 'Реклама')]"))));
+        } catch (NoSuchElementException ignored){
+        }
     }
 }
