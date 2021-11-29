@@ -9,15 +9,11 @@ import org.testng.Assert;
 public class BrowserFactory {
 
     public static WebDriver createDriver(){
-        String browser;
         WebDriver driver = null;
-        PropertyManager propertyManager = new PropertyManager();
-        browser = propertyManager.getExactProperty(PropertyManager.seleniumPropertyPath, "browser");
-        String browsFromEnv = System.getenv("browser");
-        if (browsFromEnv == null)
-        {
-            browser = propertyManager.getExactProperty(PropertyManager.seleniumPropertyPath, "browser");
-        }
+        //PropertyManager propertyManager = new PropertyManager();
+        //String browser = propertyManager.getExactProperty(PropertyManager.seleniumPropertyPath, "browser");
+        //String browser = System.getenv("browser");
+        String browser = System.getProperty("BROWSER");
         switch (browser){
             case "chrome":
                 WebDriverManager.chromedriver().setup();
