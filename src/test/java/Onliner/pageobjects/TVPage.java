@@ -24,14 +24,14 @@ public class TVPage extends BasePage {
     Label resolutionValLabel = new Label(By.xpath("//div[@class='schema-product']//span[contains(@data-bind, 'description')]"));
 
     public void manufacturerValidation(String manufacturer){
-        waitForFiltering();
+        waitForPageISLoaded();
         for (int i = 0; i < manufacturerLabel.getElementList().size(); i++){
             Assert.assertTrue(manufacturerLabel.getElementList().get(i).getText().contains(manufacturer));
         }
     }
 
     public void priceValidation(String price){
-        waitForFiltering();
+        waitForPageISLoaded();
         for (int i = 0; i < priceValLabel.getElementList().size(); i++)
         {
             Assert.assertTrue(Double.parseDouble(priceValLabel.getElementList().get(i).getText().split(" ")[0].replaceAll(",", "."))
@@ -40,7 +40,7 @@ public class TVPage extends BasePage {
     }
 
     public void screenSizeValidation(String minScreenSize, String maxScreenSize){
-        waitForFiltering();
+        waitForPageISLoaded();
         for (int i = 0; i < screenSizeValLabel.getElementList().size(); i++){
             Assert.assertTrue(Integer.parseInt(screenSizeValLabel.getElementList().get(i).getText().substring(0, 2)) >= Integer.parseInt(minScreenSize)
                     && Integer.parseInt(screenSizeValLabel.getElementList().get(i).getText().substring(0, 2)) <= Integer.parseInt(maxScreenSize));
@@ -48,7 +48,7 @@ public class TVPage extends BasePage {
     }
 
     public void resolutionValidation(String resolution){
-        waitForFiltering();
+        waitForPageISLoaded();
         for (int i = 0; i < resolutionValLabel.getElementList().size(); i++){
             Assert.assertTrue(resolutionValLabel.getElementList().get(i).getText().contains(resolution));
         }
