@@ -66,8 +66,8 @@ public class StepsDefinition {
     }
 
     @And("I filter product by maxPrice {string} using {string} field")
-    public void iFilterProductByMaxPriceUsingField(String placeholder, String maxPrice) {
-        tvPage.priceFiltration(placeholder, maxPrice);
+    public void iFilterProductByMaxPriceUsingField(String maxPrice, String placeholder) {
+        tvPage.priceFiltration(maxPrice, placeholder);
     }
 
     @And("I filter product by resolution {string}")

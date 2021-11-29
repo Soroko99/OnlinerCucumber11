@@ -56,12 +56,11 @@ public class TVPage extends BasePage {
 
     public void manufacturerFiltration(String manufacturerName)
     {
-        //waitForPAgeIsLoaded();
         CheckBox manufacturerCheckBox = new CheckBox(By.xpath(String.format(manufacturerFilterXpath, manufacturerName.toLowerCase(Locale.ROOT))));
         manufacturerCheckBox.clickViaJS();
     }
 
-    public void priceFiltration(String placeholderText, String keysToSend)
+    public void priceFiltration(String keysToSend, String placeholderText)
     {
         TextBox textBox = new TextBox(By.xpath((String.format(priceFiltrationXpath, placeholderText))));
         textBox.sendKeys(keysToSend);
@@ -72,7 +71,7 @@ public class TVPage extends BasePage {
         resolutionCheckBox.clickViaJS();
     }
 
-    public void screenSizeFiltration(String fromOrTo, String screenSize){
+    public void screenSizeFiltration(String screenSize, String fromOrTo){
         Dropdown screenSizeDropdown = new Dropdown(By.xpath(String.format(screenSizeXpath, fromOrTo)));
         screenSizeDropdown.select(Integer.toString(Integer.parseInt(screenSize) * 10));
     }
