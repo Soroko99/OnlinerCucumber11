@@ -4,7 +4,6 @@ import Onliner.main_menu.MainMenu;
 import Onliner.pageobjects.CatalogPage;
 import Onliner.pageobjects.MainPage;
 import Onliner.pageobjects.TVPage;
-import Onliner.test.BaseTest;
 import framework.Browser;
 import framework.TestListener;
 import io.cucumber.java.After;
@@ -15,8 +14,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.annotations.Listeners;
 
-@Listeners(TestListener.class)
-public class StepsDefinition extends BaseTest {
+public class StepsDefinition {
     Browser browser = new Browser();
     MainPage mainPage = new MainPage();
     MainMenu mainMenu = new MainMenu();
