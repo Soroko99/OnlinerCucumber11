@@ -6,9 +6,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import java.time.Duration;
+
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -50,14 +49,22 @@ public class BaseElement{
     }
 
     public boolean isPresent() {
-        try {
+        wait.until((ExpectedCondition<Boolean>) (x) -> {
+            try {
             element = driver.findElement(locator);
             return element.isDisplayed();
         } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return false;
+                return false;
+            }
+    });
+        try {
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        return element.isDisplayed();
+    } catch (Exception e) {
+        e.printStackTrace();
     }
+        return false;
+}
 
     public List<WebElement> getElementList(){
         if (arePresent()) return elementList;

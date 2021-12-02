@@ -4,22 +4,27 @@ import Onliner.main_menu.MainMenu;
 import Onliner.pageobjects.CatalogPage;
 import Onliner.pageobjects.MainPage;
 import Onliner.pageobjects.TVPage;
+import Onliner.test.BaseTest;
 import framework.Browser;
+import framework.TestListener;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.testng.annotations.Listeners;
 
-public class StepsDefinition {
+@Listeners(TestListener.class)
+public class StepsDefinition extends BaseTest {
     Browser browser = new Browser();
     MainPage mainPage = new MainPage();
     MainMenu mainMenu = new MainMenu();
     CatalogPage catalogPage = new CatalogPage();
     TVPage tvPage = new TVPage();
 
-    @Before
+
+    @Before()
     public void setup(){
         browser.setup();
     }
@@ -52,7 +57,6 @@ public class StepsDefinition {
     @And("I choose {string} product")
     public void iChooseProduct(String productName) {
         catalogPage.productChoice(productName);
-
     }
 
     @And("I check whether page {string} was opened")
@@ -93,7 +97,7 @@ public class StepsDefinition {
         tvPage.screenSizeValidation(minScreenSize, maxScreenSize);
     }
 
-    @After
+    @After()
     public void driverKill(){
         browser.driverClose();
     }

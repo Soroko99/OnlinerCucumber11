@@ -5,11 +5,9 @@ import framework.elements.CheckBox;
 import framework.elements.Dropdown;
 import framework.elements.Label;
 import framework.elements.TextBox;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.util.Locale;
@@ -35,7 +33,6 @@ public class TVPage extends BasePage {
         } catch (StaleElementReferenceException s) {
             waitForFiltering();
         }
-
     }
 
     public void priceValidation(String price) {
