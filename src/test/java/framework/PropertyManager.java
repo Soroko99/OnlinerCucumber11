@@ -7,7 +7,7 @@ import java.util.Properties;
 
 public class PropertyManager {
 
-    public static String seleniumPropertyPath = "src/test/resources/selenium_properties.properties";
+    public static String seleniumPropertyPath = "src/test/resources/selenium.properties";
 
     public String getExactProperty(String propertyPath, String propertyName){
         FileInputStream inputStream = null;

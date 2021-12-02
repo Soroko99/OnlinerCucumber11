@@ -3,7 +3,7 @@
 <suite name="All Test Suite">
     <test name="OnlinerCucumber">
         <classes>
-            <class name="Onliner.test.TestRun">
+            <class name="onliner.test.TestRun">
             </class>
         </classes>
     </test>

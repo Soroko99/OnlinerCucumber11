@@ -9,7 +9,7 @@ public class Dropdown extends BaseElement{
         super(locator);
     }
 
-    public void select(String value){
+    public void selectByValue(String value){
         Select select = new Select(getElement());
         select.selectByValue(value);
     }

@@ -1,6 +1,8 @@
 package framework.elements;
 
+import com.fasterxml.jackson.databind.annotation.JsonAppend;
 import framework.Browser;
+import framework.PropertyManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -13,6 +15,7 @@ import java.util.concurrent.TimeUnit;
 
 public class BaseElement{
 
+    PropertyManager propertyManager = new PropertyManager();
     WebDriver driver = Browser.driver;
     WebDriverWait wait = new WebDriverWait(driver, 5);
     By locator;
@@ -58,7 +61,7 @@ public class BaseElement{
             }
     });
         try {
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Integer.parseInt(propertyManager.getExactProperty(PropertyManager.seleniumPropertyPath, "explicit_wait")), TimeUnit.SECONDS);
         return element.isDisplayed();
     } catch (Exception e) {
         e.printStackTrace();
@@ -94,7 +97,7 @@ public class BaseElement{
             return false;
         }
         try {
-            driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Integer.parseInt(propertyManager.getExactProperty(PropertyManager.seleniumPropertyPath, "explicit_wait")), TimeUnit.SECONDS);
             return element.isDisplayed();
         } catch (Exception e) {
             e.printStackTrace();

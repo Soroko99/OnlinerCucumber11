@@ -1,18 +1,16 @@
-package Onliner.steps;
+package onliner.steps;
 
-import Onliner.main_menu.MainMenu;
-import Onliner.pageobjects.CatalogPage;
-import Onliner.pageobjects.MainPage;
-import Onliner.pageobjects.TVPage;
+import onliner.pageobjects.menu.MainMenu;
+import onliner.pageobjects.pages.CatalogPage;
+import onliner.pageobjects.pages.MainPage;
+import onliner.pageobjects.pages.TVPage;
 import framework.Browser;
-import framework.TestListener;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.testng.annotations.Listeners;
 
 public class StepsDefinition {
     Browser browser = new Browser();
@@ -20,7 +18,6 @@ public class StepsDefinition {
     MainMenu mainMenu = new MainMenu();
     CatalogPage catalogPage = new CatalogPage();
     TVPage tvPage = new TVPage();
-
 
     @Before()
     public void setup(){
