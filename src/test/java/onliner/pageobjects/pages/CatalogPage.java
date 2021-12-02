@@ -29,6 +29,6 @@ public class CatalogPage extends BasePage {
 
     @Override
     public void isRightPageOpenedAssertion(String tvExpectedTitle) {
-        Assert.assertEquals(driver.getTitle(), tvExpectedTitle);
+        Assert.assertEquals(getTitle(), tvExpectedTitle);
     }
 }

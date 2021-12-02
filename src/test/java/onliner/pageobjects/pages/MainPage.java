@@ -7,6 +7,6 @@ public class MainPage extends BasePage {
 
     @Override
     public void isRightPageOpenedAssertion(String catalogExpectedTitle) {
-        Assert.assertEquals(driver.getTitle(), catalogExpectedTitle);
+        Assert.assertEquals(getTitle(), catalogExpectedTitle);
     }
 }

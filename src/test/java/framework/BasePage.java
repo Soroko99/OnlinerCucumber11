@@ -34,4 +34,8 @@ public abstract class BasePage{
         } catch (NoSuchElementException ignored){
         }
     }
+
+    public String getTitle(){
+        return driver.getTitle();
+    }
 }
