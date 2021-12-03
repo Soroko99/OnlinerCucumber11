@@ -14,7 +14,7 @@ import java.util.Locale;
 public class TVPage extends BasePage {
 
     protected String manufacturerFilterXpath = "//input[@value='%s']//ancestor::label";
-    protected String priceFiltrationXpath = "//input[contains(@placeholder, '%s')]";
+    protected String priceFiltrationXpath = "//input[contains(@placeholder, '%s')][contains(@class, 'input_price')]";
     protected String resolutionXpath = "//input[@value='%s']//ancestor::label";
     protected String screenSizeXpath = "//select[contains(@data-bind, 'value: facet.value.%s')]";
     Label manufacturerLabel = new Label(By.xpath("//div[@class='schema-product']//span[starts-with(text(),'Телевизор')]"));
