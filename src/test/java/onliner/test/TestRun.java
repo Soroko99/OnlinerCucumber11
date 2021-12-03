@@ -7,7 +7,8 @@ import io.cucumber.testng.CucumberOptions;
         features ={"src/test/java/onliner/feature/TVFilter.feature"},
         glue = "onliner/steps",
         plugin = {"pretty","html:target/cucumber.html",
-                "json:target/cucumber.json","json:target/cucumber-reports/CucumberTestReport.json"}
+                "json:target/cucumber.json","json:target/cucumber-reports/CucumberTestReport.json",
+        }
 )
 public class TestRun extends AbstractTestNGCucumberTests {
 }

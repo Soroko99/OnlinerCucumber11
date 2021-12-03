@@ -17,7 +17,7 @@ public class BaseElement{
 
     PropertyManager propertyManager = new PropertyManager();
     WebDriver driver = Browser.driver;
-    WebDriverWait wait = new WebDriverWait(driver, 5);
+    WebDriverWait wait = new WebDriverWait(driver, Integer.parseInt(propertyManager.getExactProperty(PropertyManager.seleniumPropertyPath, "explicit_wait")));
     By locator;
     WebElement element;
     List<WebElement> elementList;
