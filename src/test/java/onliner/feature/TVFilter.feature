@@ -2,7 +2,7 @@ Feature: I want to test TV filtration
 
   Scenario Outline: I want to filter TV's by some parameters
     Given I go to main page
-    When I go to "Каталог" page
+    When I go to "Каталuог" page
     And I check whether the "Каталог Onlíner" page was opened
     And at this page I choose "Электроника" category
     And I choose "Телевидение" subcategory
